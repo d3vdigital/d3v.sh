@@ -5,7 +5,7 @@ function isEmpty(str) {
 }
 
 function IsAlphaNumeric(str) {
-    var re = /[^a-zA-Z0-9]/;
+    let re = /[^a-zA-Z0-9]/;
     return re.test(str);
 }
 
@@ -13,6 +13,11 @@ function isNumeric(val){
     val = val.replace(",","");
     val = val.replace(" ","");
     return !isNaN(val);
+}
+
+function isMoney(val){
+    let re = /^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;
+    return re.test(val);
 }
 
 function isEmail(email) {
