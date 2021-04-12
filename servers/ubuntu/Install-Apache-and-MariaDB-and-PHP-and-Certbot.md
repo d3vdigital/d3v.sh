@@ -188,8 +188,6 @@ service apache2 restart
 ```
 apt-get update
 apt-get -y install software-properties-common
-add-apt-repository -y ppa:certbot/certbot
-apt-get update
 apt-get install -y certbot python3-certbot-apache
 service apache2 restart
 
