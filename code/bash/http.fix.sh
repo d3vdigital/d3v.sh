@@ -1,4 +1,4 @@
 #!/bin/sh
 chown www-data:www-data /var/www/html/ -R
-chmod 644 /var/www/html/ -R
-find /var/www/html/ -type d -exec chmod 755 {} \;
+find /path/to/html/ -type d -exec chmod 0755 {} \; 
+find /path/to/html/ -type f -exec chmod 0644 {} \;
