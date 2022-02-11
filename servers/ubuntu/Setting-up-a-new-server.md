@@ -238,7 +238,11 @@ For Global: nano /etc/lftp.conf
 > Add
 set ssl:verify-certificate no
 set ssl:check-hostname no
-set ftp:ssl-allow false
+set ftp:list-options -a
+set ftps:initial-prot ''
+set ftp:ssl-protect-data true
+set ftp:ssl-allow true
+set ftp:ssl-force false
 ```
 
 **Add DNS Servers**
