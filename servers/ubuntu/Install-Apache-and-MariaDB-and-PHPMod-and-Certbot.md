@@ -23,8 +23,8 @@ systemctl status mariadb
 
 **Installing PHPMod**
 ```
-apt -y install php7.4 libapache2-mod-php7.4 php7.4-mysql php-common php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-readline php-pear
-a2enmod php7.4
+apt -y install php libapache2-mod-php php-mysql php-common php-cli php-common php-json php-opcache php-readline php-pear
+a2enmod php
 systemctl restart apache2
 ```
 
@@ -62,7 +62,7 @@ a2enmod cache
 a2enmod setenvif
 a2enmod speling
 
-apt-get install -y gcc make autoconf libc-dev pkg-config php-pear libmcrypt-dev libreadline-dev php7.4-dev
+apt-get install -y gcc make autoconf libc-dev pkg-config php-pear libmcrypt-dev libreadline-dev php-dev
 python -m pip install mysql-connector
 pecl channel-update pecl.php.net 
 pecl install mcrypt ssh2-1.2
@@ -137,10 +137,10 @@ Make sure the .conf looks more or less like this
 **PHP Addons and Configs**
 [https://serverpilot.io/docs/available-php-extensions](url)
 ```
-apt-get install -y php-mbstring php7.4-mbstring libapache2-mod-php7.4 php7.4-curl php-gd
+apt-get install -y php-mbstring php7.4-mbstring libapache2-mod-php php-curl php-gd
 
 
-nano /etc/php/7.4/apache2/php.ini
+nano /etc/php/8.1/apache2/php.ini
 Alter >>
 upload_max_filesize = 50M
 memory_limit = 1024M
@@ -154,7 +154,6 @@ service apache2 restart
 phpenmod mbstring
 phpenmod curl
 phpenmod mysqli
-phpenmod json
 phpenmod xml
 phpenmod xmlreader
 phpenmod xmlwriter
@@ -167,12 +166,11 @@ service apache2 restart
 
 **Harden PHP**
 ```
-nano /etc/php/7.4/apache2/php.ini
+nano /etc/php/8.1/apache2/php.ini
 Alter >>
 disable_functions = exec,system,shell_exec,passthru
 expose_php = Off
 display_errors = Off
-track_errors = Off
 html_errors = Off
 mail.add_x_header = Off
 session.name = NEWSESSID
@@ -191,7 +189,7 @@ apt-get -y install software-properties-common
 apt-get install -y certbot python3-certbot-apache
 service apache2 restart
 
-certbot certonly -n --agree-tos --email zac@dreycor.com --authenticator webroot --webroot-path /var/www/html/sudo.d3v.sh/ --installer apache -d sudo.d3v.sh
+certbot certonly -n --agree-tos --email zac@dreycor.com --authenticator webroot --webroot-path /var/www/html/sudo.d3v.sh/ --installer apache -d www.d3v.sh
 
 certbot
 
