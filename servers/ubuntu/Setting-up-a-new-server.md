@@ -47,6 +47,9 @@ ufw allow 2512/tcp
 ufw enable
 ufw status verbose
 service ufw restart
+sudo apt remove iptables-persistent
+apt install iptables-persistent
+netfilter-persistent save
 shutdown -r now
 ```
 - [https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server](url)
